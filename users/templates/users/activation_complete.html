@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+
+	<script>
+		 alert("您的账号已激活，请登录。");
+		  window.location = "{% url 'users_login' %}";
+	</script>
+{% endblock %}

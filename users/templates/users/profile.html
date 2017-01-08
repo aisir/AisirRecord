@@ -1,0 +1,37 @@
+{% extends "users/base.html" %}
+{% load i18n %}
+
+{% block content %}
+
+<div class="col-md-12">
+    <div class="panel panel-default bootstrap-admin-no-table-panel">
+        <div class="panel-heading">
+            <div class="text-muted bootstrap-admin-box-title">个人信息</div>
+        </div>
+        <div class="bootstrap-admin-no-table-panel-content bootstrap-admin-panel-content collapse in">
+            <form class="form-horizontal">
+                <p></p>
+                <fieldset>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">用户名</label>
+                        <div class="col-md-5">
+                            <input class="form-control " type="text" disabled="" value="{{user.get_full_name}}">
+                        </div>
+                    </div>
+                   <div class="form-group">
+                        <label class="col-md-3 control-label">邮箱</label>
+                        <div class="col-md-5">
+                            <input class="form-control " type="text" disabled="" value="{{user.get_full_name}}">
+                        </div>
+                    </div>
+
+
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,61 @@
+
+{% load i18n %}
+
+{% block content %}
+<!-- 模态框（Modal） -->
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">登录</h4>
+            </div>
+            <div class="modal-body">
+                    <form class="form-horizontal" role="form" method="post" action="{% url 'users_login' %}">
+                         {% if form.errors %}
+                    {% include "users/partials/errors.html" %}
+                    {% endif %}
+                    {% csrf_token %}
+                   <!-- {% for field in form %}
+                    {% include "users/partials/field.html" %}
+                    {% endfor %}-->
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-md-2 control-label">用户名：</label>
+                            <div class="col-md-10">
+                                <input type="email" class="form-control" id="inputEmail3" placeholder="邮箱或手机号" name="username">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">密码：</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" id="inputPassword3" name="password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"> 记住密码
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                 <input type="submit" value="{% trans 'Log in' %}" class="btn btn-success" />
+                                <a href="{% url 'users_register' %}" class="btn btn-success" >注册</a>
+                <a href="{% url 'users_password_reset' %}">忘记密码</a>
+                            </div>
+                        </div>
+
+                </form>
+
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
+</div>
+
+{% endblock %}

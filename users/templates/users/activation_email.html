@@ -1,0 +1,10 @@
+{% load i18n %}
+
+感谢您在 {{ site.name }}注册！！！
+
+为了激活您的账号，请点击下方链接
+{{ protocol }}://{{ site.domain }}{% url 'users_activate' uid token %}
+
+{% blocktrans %}该链接将在 {{ expiration_days }} 天后失效。{% endblocktrans %}
+
+如果你不注册该账号，不必在意本邮件。

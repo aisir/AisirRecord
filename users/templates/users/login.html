@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<br />
+<div class="container">
+	<div class="col-md-6 col-md-offset-3">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				登录
+			</div>
+			<div class="panel-body">
+
+				<form method="post" action="." class="form-horizontal">
+					{% csrf_token %}
+					<span class="help-block error-list">
+					{% if form.errors %}
+					{% include "users/partials/errors.html" %}
+					{% endif %}
+					{% for field in form %}
+					{{ field.errors|striptags|linebreaks}}
+					{% endfor %}
+				</span>
+					<div class="form-group">
+						<label for="inputEmail3" class="col-md-2 control-label">用户名：</label>
+						<div class="col-lg-6">
+							<input type="email" class="form-control" id="inputEmail3" placeholder="邮箱或手机号" name="username">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputPassword3" class="col-sm-2 control-label">密码：</label>
+						<div class="col-lg-6">
+							<input type="password" class="form-control" id="inputPassword3" name="password">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-offset-4 col-md-8">
+							<input type="submit" value="{% trans 'Log in' %}" class="btn btn-success" />
+							<input type="hidden" name="next" value="{{ next }}" />
+							<a href="{% url 'users_register' %}" class="btn btn-success" >注册</a>
+							&nbsp;&nbsp;
+							<a href="{% url 'users_password_reset' %}">忘记密码</a>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

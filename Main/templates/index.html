@@ -1,0 +1,129 @@
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Start of Search Wrapper -->
+<div class="search-area-wrapper">
+    <div class="search-area container">
+
+        <form id="search-form" class="search-form clearfix" method="get" action="{% url 'grabrecord' %}" autocomplete="off">
+            <input class="search-term required" type="text" id="urlname" name="urlname" placeholder="请输入要查询的新闻链接" title="* Please enter a search term!" />
+            <input class="search-btn" type="submit" value="搜索"/>
+            <div id="search-error-container"></div>
+        </form>
+    </div>
+</div>
+<!-- End of Search Wrapper -->
+
+<!-- Start of Page Container -->
+<div class="page-container">
+    <div class="container">
+        <div class="row">
+
+            <!-- start of page content -->
+            <div class="col-md-8 main-listing">
+                <h3>最新
+                 <a class="more-right" id="v">查看更多</a>
+                </h3>
+                {% for record in newrecords%}
+                <article class="format-standard type-post hentry clearfix">
+
+                    <header class="clearfix">
+
+                        <h4 class="post-title">
+                            <a href="{% url 'detail' record.id %}">{{record.title}}</a>
+                        </h4>
+
+                        <div class="post-meta clearfix">
+                            <span class="date">{{record.publish_time}}</span>
+                        s
+                            <span class="source"><a href="{{record.source}}" target="_blank" >原文链接</a></span>
+
+                            <span class="like-count"><!--{{record.likenum}}--></span>
+                        </div>
+                        <!-- end of post meta -->
+
+                    </header>
+
+
+                </article>
+                {% endfor %}
+
+            </div>
+            <!-- end of page content -->
+
+
+            <!-- start of sidebar -->
+            <aside class="col-md-4 page-sidebar">
+
+                <section class="widget">
+                    <div class="support-widget">
+                        <h3 class="title">支持</h3>
+                        <p class="intro">18510343052@126.com</p>
+                    </div>
+                </section>
+
+
+                <section class="widget">
+                    <h3 class="title">热门记录</h3>
+                    <ul class="articles">
+                        {% for record in hotrecords%}
+                        <li class="article-entry standard">
+                            <h4><a href="{% url 'detail' record.id %}">{{record.title}}</a></h4>
+                            <span class="article-meta">{{record.publish_time|date:'m-j f'}} <span class="like-count">{{record.likenum}}</span></span>
+
+                        </li>
+                         {% endfor %}
+
+                    </ul>
+                </section>
+
+                <section class="widget">
+                    <h3 class="title">标签</h3>
+                    <div class="tagcloud">
+                            {% for tag in tags%}
+                        <a href="#" class="btn btn-mini">{{tag.name}}</a>
+                          {% endfor %}
+
+                    </div>
+                </section>
+
+                <section class="widget">
+                    <h3 class="title">最新标记</h3>
+                    <ul id="recentcomments">
+                            {% for evaluate in evaluates%}
+                        <li class="recentcomments"><a href="#" rel="external nofollow" class="url">{{evaluate.user.get_short_name}}</a> on
+                            <a href="{% url 'detail' evaluate.recorder.id %}">{{evaluate.recorder.title}}</a></li>
+                          {% endfor %}
+
+                    </ul>
+                </section>
+
+            </aside>
+            <!-- end of sidebar -->
+        </div>
+    </div>
+</div>
+<!-- End of Page Container -->
+<script>
+$(".search-btn").on('click', function() {
+        var excel_file = $("#urlname").val();
+        if (excel_file == "" || excel_file.length == 0) {
+            alert("请填写新闻链接！");
+            return false;
+        } else {
+            return true;
+        }
+    });
+
+<!--var app = new Vue({-->
+  <!--delimiters: ['[', ']'],-->
+  <!--el: '#v',-->
+  <!--data: {-->
+    <!--message: 'Hello Vue!'-->
+  <!--}-->
+<!--})-->
+
+    </script>
+{% endblock %}

@@ -1,0 +1,152 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="lt-ie9 lt-ie8" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="lt-ie9" lang="zh-cn"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="zh">
+<!--<![endif]-->
+
+<head>
+    <!-- META TAGS -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="baidu-site-verification" content="yQzYmsfLxQ" />
+
+    <meta name="keywords" content="aisir,新闻,新闻分析,数据挖掘,网络爬虫,相关新闻,记录,机器学习,分词,网页正文">
+
+      <meta name="description" content="通过用户提交的新闻链接，抓取新闻并分析统计，获取新闻背后的信息">
+    <meta name="author" content="Aisir新闻">
+    <title>Aisir新闻</title>
+
+    <!-- Style Sheet-->
+{% load static%}
+    <link rel='stylesheet' id='bootstrap-css-css' href="{% static '/css/bootstrap.css' %}" type='text/css' media='all' />
+    <link rel='stylesheet' id='responsive-css-css' href="{% static '/css/bootstrap-responsive.css'%}" type='text/css' media='all' />
+       <link rel='stylesheet' id='main-css-css' href="{% static '/css/main.css' %}" type='text/css' media='all' />
+
+  <link rel='stylesheet'  href="{% static 'users/css/style.css' %}" type='text/css' media='all' />
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+<script src="js/html5.js"></script></script>
+<![endif]-->
+<script type='text/javascript' src="{% static '/js/jquery.js'%}"></script>
+    <script type='text/javascript' src="{% static '/js/vue.js'%}"></script>
+
+</head>
+
+<body style="min-height:300px;">
+
+    <!-- Start of Header -->
+    <div class="header-wrapper">
+        <header>
+            <div class="container">
+
+
+                <div class="logo-container">
+                    <!-- Website Logo -->
+                    <a href="{% url 'index' %}" title="Knowledge Base Theme">
+                        <img src="{%static '/images/logo.png'%}" width="100px" alt="网站首页">
+                    </a>
+
+                </div>
+
+
+                <!-- Start of Main Navigation -->
+                <nav class="main-nav">
+                    <div class="menu-top-menu-container">
+                        <ul id="menu-top-menu" class="clearfix">
+                            <li><a href="{% url 'index' %}">首页</a></li>
+                            <li><a href="">媒体统计</a></li>
+                            <li><a href="">新闻汇总</a></li>
+                             {% if user.is_authenticated %}
+<li> <a class="logined" href="{% url 'users_profile' %}">{% firstof user.get_short_name user.get_username %}</a></li>
+                              <li><a href="{% url 'users_logout'  %}">退出</a></li>
+                           {% else %}
+                            <li><a href="#myModal" data-toggle="modal" data-target="#myModal">登录</a></li>
+                            <li><a href="{% url 'users_register' %}">注册</a></li>
+                            {%endif%}
+                        </ul>
+                    </div>
+                </nav>
+                <!-- End of Main Navigation -->
+
+            </div>
+        </header>
+    </div>
+    <!-- End of Header -->
+
+{% block content %}
+
+{% endblock %}
+    <!-- End of Page Container -->
+
+    <!-- Start of Footer -->
+    <footer id="footer-wrapper" class="">
+        <div id="footer" class="container">
+            <div class="row">
+
+                <div class="col-md-6">
+                    <section class="widget">
+                        <h3 class="title">网站工作</h3>
+                        <div class="textwidget">
+                            <p>对用户搜索的新闻热点、事件和信息等提供简单的分析</p>
+                            <p>希望能避免不必要的的损失</p>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="col-md-6">
+                    <section class="widget">
+                        <h3 class="title">微信</h3>
+                        <div class="flickr-photos" id="basicuse">
+                            <img src="{%static '/images/wechat.png'%}" width="100" />
+                        </div>
+                    </section>
+                </div>
+
+            </div>
+        </div>
+        <!-- end of #footer -->
+
+        <!-- Footer Bottom -->
+        <div id="footer-bottom-wrapper">
+            <div id="footer-bottom" class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="copyright">
+                            Copyright © 2016. Aisir
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <!-- Social Navigation -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of Footer Bottom -->
+
+    </footer>
+    <!-- End of Footer -->
+
+
+    <a href="#top" id="scroll-top"></a>
+
+    <!-- script -->
+
+<script type='text/javascript' src="{% static '/js/bootstrap.js'%}"></script>
+    <script type='text/javascript' src="{% static '/js/jquery.easing.1.34e44.js'%}"></script>
+    <script type='text/javascript' src="{% static '/js/prettyphoto/jquery.prettyPhotoaeb9.js'%}"></script>
+    <script type='text/javascript' src="{% static '/js/jquery.liveSearchd5f7.js'%}"></script>
+    <!--<script type='text/javascript' src='js/jflickrfeed.js'></script>-->
+    <script type='text/javascript' src="{% static '/js/jquery.formd471.js'%}"></script>
+    <script type='text/javascript' src="{% static '/js/jquery.validate.minfc6b.js'%}"></script>
+    <script type='text/javascript' src="{% static '/js/custom.js'%}"></script>
+
+ {% include "users/loginmodal.html" %}
+ {% include "msgModal.html" %}
+
+</body>
+
+</html>
