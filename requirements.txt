@@ -113,7 +113,7 @@ system-service==0.3
 systemd-python==232
 tabulate==0.7.5
 tornado==4.4.2
-Twisted==16.6.0
+Twisted==19.7.0
 tzlocal==1.3
 u-msgpack-python==2.3.0
 ubuntu-drivers-common==0.0.0
