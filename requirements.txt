@@ -42,7 +42,7 @@ gevent==1.1.2
 greenlet==0.4.11
 guacamole==0.9.2
 html5lib==0.999
-httplib2==0.9.1
+httplib2==0.18.0
 idna==2.1
 incremental==16.10.1
 itsdangerous==0.24
