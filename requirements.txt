@@ -24,7 +24,7 @@ cssselect==1.0.0
 defer==1.0.6
 defusedxml==0.4.1
 distro-info===0.14build1
-Django==1.10.4
+Django==1.11.29
 django-allauth==0.29.0
 django-appconf==1.0.2
 django-model-utils==2.6
