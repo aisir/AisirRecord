@@ -47,7 +47,7 @@ idna==2.1
 incremental==16.10.1
 itsdangerous==0.24
 jieba==0.38
-Jinja2==2.8
+Jinja2==2.11.3
 jmespath==0.9.0
 keyring==9.1
 keyrings.alt==1.1.1
